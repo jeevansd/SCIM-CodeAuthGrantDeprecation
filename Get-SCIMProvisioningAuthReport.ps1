@@ -233,7 +233,7 @@ if ($otherAuthApps.Count -gt 0) {
 }
 
 # --- Export to CSV ---
-$csvPath = "$env:USERPROFILE\Desktop\SCIM_Provisioning_AuthMethod_Report_$(Get-Date -Format 'yyyyMMdd_HHmmss').csv"
+$csvPath = Join-Path -Path (Get-Location) -ChildPath "SCIM_Provisioning_AuthMethod_Report_$(Get-Date -Format 'yyyyMMdd_HHmmss').csv"
 $scimApps | Select-Object DisplayName, AppId, ObjectId, TemplateId, AppTemplate, JobStatus, AuthType, IsCodeAuthGrant `
     | Export-Csv -Path $csvPath -NoTypeInformation
 Write-Host "Report exported to: $csvPath" -ForegroundColor Cyan
